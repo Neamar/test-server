@@ -1,6 +1,5 @@
 import { createServer } from 'node:http';
 
-const hostname = '127.0.0.1';
 const port = process.env.PORT || 3000;
 let rps = 0;
 
@@ -9,7 +8,7 @@ setInterval(() => {
   rps = 0;
 }, 1000);
 
-const content = Array(50000).fill('a').join('');
+const content = Array(50000).fill('a').join('') + '\n';
 const server = createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
@@ -17,6 +16,6 @@ const server = createServer((req, res) => {
   rps++;
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+server.listen(port, () => {
+  console.log(`Server running on port ${port}/`);
 });
