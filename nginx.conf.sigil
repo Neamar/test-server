@@ -84,6 +84,10 @@ server {
   keepalive_timeout   70;
 
   location    / {
+    sendfile           on;
+    sendfile_max_chunk 1m;
+    tcp_nopush on;
+    tcp_nodelay       on;
 
     gzip on;
     gzip_min_length  1100;
